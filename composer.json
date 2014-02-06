@@ -20,6 +20,6 @@
         "php": ">=5.1"
     },
     "autoload": {
-        "psr-0": { "SurveyMonkey": "libraries/" }
+        "psr-0": { "WufooApiWrapper": "libraries/" }
     }
 }
