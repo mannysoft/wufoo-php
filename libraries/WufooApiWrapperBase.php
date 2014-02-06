@@ -11,12 +11,25 @@ class WufooApiWrapperBase {
 	protected function getHelper($url, $type, $iterator, $index = 'Hash') {
 		$this->curl = new WufooCurl();
 		$response = $this->curl->getAuthenticated($url, $this->apiKey);
+		
+		$response = json_decode($response);
+		
+		//
+		if (isset($response->HTTPCode))
+		{
+			return false;
+		}
+		
+		return $response;
+		
+		/*
 		$response = json_decode($response);
 		$className = 'Wufoo'.$type;
 		foreach ($response->$iterator as $obj) {
 			$arr[$obj->$index] = new $className($obj);
 		}
 		return $arr;
+		*/
 	}
 	
 	protected function getFullUrl($url) {
@@ -39,8 +52,8 @@ class WufooCurl {
 
 		$response = curl_exec($this->curl);
 		$this->setResultCodes();
-		$this->checkForCurlErrors();
-		$this->checkForGetErrors($response);
+		//$this->checkForCurlErrors();
+		//$this->checkForGetErrors($response);
 		curl_close($this->curl);
 		return $response;
 	}
@@ -165,7 +178,7 @@ class WufooCurl {
 	private function throwResponseError($response) {
 		if ($response) {
 			$obj = json_decode($response);
-			throw new WufooException('('.$obj->HTTPCode.') '.$obj->Text, $this->ResultStatus['HTTP_CODE']);
+			throw new WufooException('('.$obj->HTTPCode.') '.$obj->Text, $this->ResultStatus['http_code']);
 		} else {
 			throw new WufooException('(500) This is embarrassing... We did not anticipate this error type.  Please contact support here: support@wufoo.com', 500);
 		}
