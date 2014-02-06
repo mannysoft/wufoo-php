@@ -1,19 +1,19 @@
 {
-    "name": "mannysoft/surveymonkey",
+    "name": "mannysoft/wufoo-php",
     "version": "1.0.0",
     "type": "library",
-    "description": "PHP class for SurveyMonkey API.",
+    "description": "Wufoo PHP API Wrapper.",
     "keywords": ["laravel", "php"],
-    "homepage": "https://github.com/oori/php-surveymonkey",
+    "homepage": "https://github.com/wufoo/Wufoo-PHP-API-Wrapper",
     "license": "MIT",
     "authors": [
         {
-            "name": "Oori",
-            "homepage": "https://github.com/oori"
+            "name": "https://github.com/wufoo/Wufoo-PHP-API-Wrapper",
+            "homepage": "https://github.com/wufoo/Wufoo-PHP-API-Wrapper"
         },
         {
             "name": "Manny Isles",
-            "homepage": "https://github.com/mannysoft"
+            "homepage": "https://github.com/mannysoft/wufoo-php"
         }
     ],
     "require": {
